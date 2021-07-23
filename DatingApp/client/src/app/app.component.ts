@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'My App';
   users: any;
+
   constructor(private http: HttpClient) {}
   
   ngOnInit()
