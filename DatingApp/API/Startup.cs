@@ -60,7 +60,7 @@ namespace API
 
             app.UseRouting();
             //after implemented authentication check what happens if CORS is pasted after UseAuthorization()
-            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthorization();
 
