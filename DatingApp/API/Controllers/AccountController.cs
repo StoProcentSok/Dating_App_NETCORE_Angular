@@ -23,7 +23,7 @@ namespace API.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if(await UserExists(registerDto.Username))
+            if (await UserExists(registerDto.Username))
             {
                 return BadRequest("Username is already taken");
             }
@@ -39,16 +39,17 @@ namespace API.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return new UserDto{
+            return new UserDto
+            {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user)
             };
-        } 
+        }
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == loginDto.Username);
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == loginDto.Username.ToLower());
             if (user == null)
             {
                 return Unauthorized("Invalid username");
@@ -66,7 +67,8 @@ namespace API.Controllers
                 }
             }
 
-            return new UserDto{
+            return new UserDto
+            {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user)
             };
