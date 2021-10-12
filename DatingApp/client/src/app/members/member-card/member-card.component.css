@@ -5,7 +5,12 @@
     opacity: 0.7;
 }
 
+.card-image-top{
+    max-height: 150px;
+}
+
 .card img{
+    width: auto;
     transform: scale(1.0, 1.0);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
