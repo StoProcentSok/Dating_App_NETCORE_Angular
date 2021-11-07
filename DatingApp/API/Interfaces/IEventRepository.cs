@@ -8,6 +8,7 @@ namespace API.Interfaces
     public interface IEventRepository
     {
         Task<IEnumerable<Event>> GetEvents();
+        Task<Event> GetEvent(int eventId);
 
     }
 }

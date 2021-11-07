@@ -22,10 +22,17 @@ namespace API.Controllers
         }
 
         [HttpGet("get")]
-        public ActionResult<IEnumerable<Event>> GetEvents()
+        public async Task<IEnumerable<Event>> GetEvents()
         {
-            var events = _eventsRepository.GetEvents();
-            return Ok(events);
+            var events = await _eventsRepository.GetEvents();
+            return events;
+        }
+
+        [HttpGet("{id}", Name = "GetById")]
+        public async Task<ActionResult<Event>> GetEvent(int eventId)
+        {
+            var @event = await _context.Events.FirstOrDefaultAsync(e => e.Id == eventId);
+            return @event;
         }
 
         [HttpPost("Add")]

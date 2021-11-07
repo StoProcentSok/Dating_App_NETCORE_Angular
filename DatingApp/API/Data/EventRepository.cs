@@ -16,6 +16,11 @@ namespace API.Data
 
         }
 
+        public Task<Event> GetEvent(int eventId)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<IEnumerable<Event>> GetEvents()
         {
             var events = _context.Events.ToListAsync();
