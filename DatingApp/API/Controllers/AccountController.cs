@@ -64,9 +64,7 @@ namespace API.Controllers
             }
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
-
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
-
             for (int i = 0; i < computedHash.Length; i++)
             {
                 if (computedHash[i] != user.PasswordHash[i])
@@ -83,7 +81,6 @@ namespace API.Controllers
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };
-
         }
 
         private async Task<bool> UserExists(string username)

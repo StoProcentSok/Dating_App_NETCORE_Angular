@@ -12,4 +12,12 @@ namespace API.Entities
         public AppUser AppUser { get; set; }
         public int AppUserId { get; set; }
     }
+
+    public class EventPhoto
+    {
+        public int Id { get; set; }
+        public string Url { get; set; }
+        public Event Event { get; set; }
+        public int EventId { get; set; }
+    }
 }

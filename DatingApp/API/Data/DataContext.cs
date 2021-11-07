@@ -9,15 +9,16 @@ namespace API.Data
         {
 
         }
-
         public DbSet<AppUser> Users { get; set; }
         public DbSet<UserLike> Likes { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<UserEventParticipation> EventsParticipations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            //forming primary key fot table
+            //forming primary key for table
             builder.Entity<UserLike>()
                 .HasKey(k => new { k.SourceUserId, k.LikedUserId });
 
@@ -31,6 +32,22 @@ namespace API.Data
                 .HasOne(s => s.LikedUser)
                 .WithMany(l => l.LikedByUsers)
                 .HasForeignKey(s => s.LikedUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+            builder.Entity<UserEventParticipation>()
+                .HasKey(k => new { k.SourceUserId, k.EventToParticipateIniId });
+
+            builder.Entity<UserEventParticipation>()
+                .HasOne(s => s.SourceUser)
+                .WithMany(e => e.UserEvents)
+                .HasForeignKey(s => s.SourceUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<UserEventParticipation>()
+                .HasOne(s => s.EventToParticipateIn)
+                .WithMany(l => l.ParticipatingUsers)
+                .HasForeignKey(s => s.EventToParticipateIniId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
