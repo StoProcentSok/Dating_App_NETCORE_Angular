@@ -21,17 +21,17 @@ namespace API.Controllers
             this._context = context;
         }
 
-        [HttpGet("get")]
+        [HttpGet("getevents")]
         public async Task<IEnumerable<Event>> GetEvents()
         {
             var events = await _eventsRepository.GetEvents();
             return events;
         }
 
-        [HttpGet("{id}", Name = "GetById")]
-        public async Task<ActionResult<Event>> GetEvent(int eventId)
+        [HttpGet("getevent/{id}")]
+        public async Task<ActionResult<Event>> GetEvent(int id)
         {
-            var @event = await _context.Events.FirstOrDefaultAsync(e => e.Id == eventId);
+            var @event = await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
             return @event;
         }
 

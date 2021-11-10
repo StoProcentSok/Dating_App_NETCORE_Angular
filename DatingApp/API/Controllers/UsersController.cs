@@ -71,7 +71,7 @@ namespace API.Controllers
         {
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
-            var result = await _photoService.AddPhotoAsync(file);
+            var result = await _photoService.AddUserPhotoAsync(file);
             if (result.Error != null)
             {
                 return BadRequest(result.Error.Message);
@@ -93,7 +93,6 @@ namespace API.Controllers
             if (await _userRepository.SaveAllAsync())
             {
                 return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoDto>(photo));
-
             }
 
             return BadRequest("Problem adding photo");

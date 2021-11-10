@@ -5,7 +5,10 @@
             <ul class="navbar-nav mr-auto">
                 <ng-container *ngIf="accountService.currentUser$ | async">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink='/members' routerLinkActive='active'>Matches</a>
+                        <a class="nav-link" routerLink='/events' routerLinkActive='active'>Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/members' routerLinkActive='active'>Friends</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink='/lists' routerLinkActive='active'>Lists</a>
@@ -14,7 +17,7 @@
                         <a class="nav-link" routerLink='/messages' routerLinkActive='active'>Messages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink='/events' routerLinkActive='active'>Events</a>
+                        <a class="nav-link" routerLink='/scoreboard' routerLinkActive='active'>Scoreboard</a>
                     </li>
                 </ng-container>
                 <li class="nav-item">

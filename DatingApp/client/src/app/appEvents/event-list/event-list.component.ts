@@ -8,7 +8,7 @@ import { EventsService } from 'src/app/_services/events.service';
   styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent implements OnInit {
-appEvents: AppEvent;
+appEvents: AppEvent[];
   constructor(private eventService: EventsService) { }
 
   ngOnInit(): void {
@@ -18,7 +18,7 @@ appEvents: AppEvent;
   loadEvents()
   {
     this.eventService.getEvents().subscribe(response => {
-      this.appEvents = response;
+      this.appEvents = (response);
     })
   }
 

@@ -27,6 +27,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { EventListComponent } from './appEvents/event-list/event-list.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard/scoreboard.component';
+import { EventCardComponent } from './appEvents/event-card/event-card/event-card.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { EventListComponent } from './appEvents/event-list/event-list.component'
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
-    EventListComponent
+    EventListComponent,
+    ScoreboardComponent,
+    EventCardComponent
   ],
   imports: [
     BrowserModule,
