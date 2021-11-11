@@ -20,7 +20,6 @@ namespace API.Data
         {
             this._mapper = mapper;
             this._context = context;
-
         }
 
         public async Task<MemberDto> GetMemberAsync(string username)
@@ -48,7 +47,6 @@ namespace API.Data
                 "created" => query.OrderByDescending(u => u.Created),
                 _ => query.OrderByDescending(u => u.LastActive)
             };
-
 
             return await PagedList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>
             (_mapper.ConfigurationProvider).AsNoTracking(),

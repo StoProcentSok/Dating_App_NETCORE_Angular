@@ -11,15 +11,27 @@ import { EventsService } from 'src/app/_services/events.service';
 export class EventCardComponent implements OnInit {
   @Input() appevent: AppEvent;
 
+  participants : number = 0;
+
   constructor(private eventService: EventsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.getNumber();
   }
 
   registerToEvent(appEvent: AppEvent){
     this.eventService.registerToEvent(appEvent).subscribe(() => {
       this.toastr.success('You joined event: ' + this.appevent.eventName);
     })
+  }
+
+  getParticipantsCount(appEvent: AppEvent){
+    this.eventService.getParticipantsCount(appEvent).subscribe(data => 
+      this.participants = data)
+    }
+
+  getNumber(){
+    this.participants =  Math.floor(Math.random() * (15 - 0)) + 0;
   }
 
 }

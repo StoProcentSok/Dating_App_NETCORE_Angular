@@ -3,20 +3,10 @@ using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using API.Interfaces;
 using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using API.DTOs;
-using API.Entities;
 using API.Extensions;
-using API.Helpers;
-using API.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
@@ -44,6 +34,13 @@ namespace API.Controllers
         {
             var @event = await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
             return @event;
+        }
+        [HttpGet("getevent/{id}/participantsCount")]
+        public async Task<ActionResult<int>> getParticipantsCount(int id)
+        {
+            var @event = await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
+            var participants = @event.ParticipatingUsers;
+            return participants.Count;
         }
 
         [HttpPost("Add")]
@@ -90,6 +87,7 @@ namespace API.Controllers
             };
 
             sourceUserWithEvents.UserEvents.Add(eventParticipation);
+            sourceUserWithEvents.Score++;
 
             if (await _userRepository.SaveAllAsync()) return Ok();
 

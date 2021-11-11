@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EventDetailComponent } from './appEvents/event-detail/event-detail.component';
 import { EventListComponent } from './appEvents/event-list/event-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
       {path: 'lists', component: ListsComponent},
       {path: 'messages', component: MessagesComponent},
       {path: 'events', component: EventListComponent},
+      {path: 'events/:id', component: EventDetailComponent},
       {path: 'scoreboard', component: ScoreboardComponent},
     ]
   },

@@ -15,6 +15,9 @@ export class EventsService {
 
   constructor(private http: HttpClient) { }
 
+getEvent(id: string): Observable<AppEvent>{
+  return this.http.get<AppEvent>(this.baseUrl + 'events/getevent/' + id, {});
+}
 
 getEvents(): Observable<AppEvent[]>{
   return this.http.get<AppEvent[]>(this.baseUrl + 'events/getevents');
@@ -23,5 +26,11 @@ getEvents(): Observable<AppEvent[]>{
 registerToEvent(appEvent: AppEvent){
   return this.http.post(this.baseUrl + 'events/register/' + appEvent.id, {});
 } 
+
+//TODO refactor: Get all participants earlier and just return collection count, we will need participants to
+//show who already joined event
+getParticipantsCount(appEvent: AppEvent){
+  return this.http.get<number>(this.baseUrl + 'events/' + appEvent.id + '/participantsCount', {});
+}
 
 }

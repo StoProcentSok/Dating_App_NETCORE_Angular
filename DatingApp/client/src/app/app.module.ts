@@ -29,6 +29,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { EventListComponent } from './appEvents/event-list/event-list.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard/scoreboard.component';
 import { EventCardComponent } from './appEvents/event-card/event-card/event-card.component';
+import { EventDetailComponent } from './appEvents/event-detail/event-detail.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EventCardComponent } from './appEvents/event-card/event-card/event-card
     DateInputComponent,
     EventListComponent,
     ScoreboardComponent,
-    EventCardComponent
+    EventCardComponent,
+    EventDetailComponent
   ],
   imports: [
     BrowserModule,

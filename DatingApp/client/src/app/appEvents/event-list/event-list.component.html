@@ -1,12 +1,3 @@
-<p>event-list works!</p>
-
-
-<!-- Add event card component, same as for member card.
-event card takes event as model.
-Event have counter of subscribed users
-Event have button Join (active if not joined)
-After first join points are added.
-Add comments section in event. -->
 <div *ngFor="let appEvent of appEvents" class="container">
     <app-event-card [appevent]="appEvent"></app-event-card>
 </div>
