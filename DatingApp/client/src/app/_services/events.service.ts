@@ -20,6 +20,8 @@ getEvents(): Observable<AppEvent[]>{
   return this.http.get<AppEvent[]>(this.baseUrl + 'events/getevents');
 }
 
-
+registerToEvent(appEvent: AppEvent){
+  return this.http.post(this.baseUrl + 'events/register/' + appEvent.id, {});
+} 
 
 }

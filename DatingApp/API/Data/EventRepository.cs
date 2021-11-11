@@ -16,15 +16,27 @@ namespace API.Data
 
         }
 
-        public Task<Event> GetEvent(int eventId)
+        public async Task<Event> GetEvent(int eventId)
         {
-            throw new System.NotImplementedException();
+            return await _context.Events.FindAsync(eventId);
         }
 
         public async Task<IEnumerable<Event>> GetEvents()
         {
             var events = _context.Events.ToListAsync();
             return await events;
+        }
+
+        public async Task<AppUser> GetUserWithEvents(int userId)
+        {
+            return await _context.Users
+                .Include(x => x.UserEvents)
+                .FirstOrDefaultAsync(x => x.Id == userId);
+        }
+
+        public async Task<UserEventParticipation> GetUserEvent(int sourceUserId, int eventId)
+        {
+            return await _context.EventsParticipations.FindAsync(sourceUserId, eventId);
         }
     }
 }
