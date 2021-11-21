@@ -4,3 +4,6 @@ img{
     height:auto;
     width:auto;
 }
+#clickable {
+    cursor: pointer
+}

@@ -1,6 +1,6 @@
 <div *ngIf="!createEventMode">
     <button (click)="createEventToggle()" class="btn btn-primary ml-3 mb-3"> Create Event </button>
-    <div *ngFor="let appEvent of appEvents" class="container card" >
+    <div  *ngFor="let appEvent of appEvents" class="container card">
         <app-event-card [appevent]="appEvent"></app-event-card>
     </div>
 </div>
