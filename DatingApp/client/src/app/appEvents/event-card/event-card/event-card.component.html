@@ -13,10 +13,10 @@
                 <div class="col">
                     <img src="/assets/eventPhoto.jpg" alt="{{appevent.eventName}}">
                 </div>
-                <div class="col">Opis wydarzenia.</div>
+                <div class="col">{{appevent.eventDescription}}</div>
                 <div class="col align-bottom">
                     <div class="align-right">
-                        <button (click)="registerToEvent(appevent)" class="btn btn-primary"> Join Event </button>
+                        <button (click)="registerToEvent(appevent)" class="btn btn-success"> Join Event </button>
                         <p>Participants: {{participants}}</p>
                     </div>  
                 </div>

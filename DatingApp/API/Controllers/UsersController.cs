@@ -47,6 +47,14 @@ namespace API.Controllers
             return Ok(users);
         }
 
+        [HttpGet("GetAllUsers")]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetAllUsers()
+        {
+            var users = await _userRepository.GetAllMembersAsync();
+            return Ok(users);
+        }
+
+
         [HttpGet("{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {

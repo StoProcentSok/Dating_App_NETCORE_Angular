@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using API.Interfaces;
 using System.Linq;
 using API.Extensions;
+using AutoMapper;
+using API.DTOs;
 
 namespace API.Controllers
 {
@@ -15,11 +17,15 @@ namespace API.Controllers
         private readonly IEventRepository _eventsRepository;
         private readonly IUserRepository _userRepository;
         private readonly DataContext _context;
-        public EventsController(IEventRepository eventsRepository, IUserRepository userRepository, DataContext context)
+        private readonly IMapper _mapper;
+        public EventsController(IEventRepository eventsRepository, IUserRepository userRepository,
+                                DataContext context, IMapper mapper)
         {
             this._eventsRepository = eventsRepository;
             this._context = context;
             this._userRepository = userRepository;
+            this._mapper = mapper;
+
         }
 
         [HttpGet("getevents")]
@@ -56,6 +62,20 @@ namespace API.Controllers
             await _context.SaveChangesAsync();
 
             return newEvent;
+        }
+
+        [HttpPost("AddEventFromForm")]
+        public async Task<ActionResult<AppEventDto>> AddEventFromForm(CreateEventDto eventDto)
+        {
+            var newEvent = _mapper.Map<Event>(eventDto);
+            _context.Events.Add(newEvent);
+            await _context.SaveChangesAsync();
+
+            return new AppEventDto
+            {
+                EventName = newEvent.EventName,
+                EventDescription = newEvent.EventDescription,
+            };
         }
 
         [HttpDelete("delete-event/{eventId}")]

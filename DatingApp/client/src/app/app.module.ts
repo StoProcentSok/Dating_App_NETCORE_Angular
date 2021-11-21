@@ -30,6 +30,8 @@ import { EventListComponent } from './appEvents/event-list/event-list.component'
 import { ScoreboardComponent } from './scoreboard/scoreboard/scoreboard.component';
 import { EventCardComponent } from './appEvents/event-card/event-card/event-card.component';
 import { EventDetailComponent } from './appEvents/event-detail/event-detail.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { CommentCardComponent } from './comments/comment-card/comment-card.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { EventDetailComponent } from './appEvents/event-detail/event-detail.comp
     EventListComponent,
     ScoreboardComponent,
     EventCardComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    CreateEventComponent,
+    CommentCardComponent
   ],
   imports: [
     BrowserModule,

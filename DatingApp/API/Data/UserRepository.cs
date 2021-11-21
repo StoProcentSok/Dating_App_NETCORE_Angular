@@ -22,6 +22,13 @@ namespace API.Data
             this._context = context;
         }
 
+        public async Task<IEnumerable<MemberDto>> GetAllMembersAsync()
+        {
+            var members = await _context.Users.Include(p => p.Photos).ToListAsync();
+            var membersToReturn = _mapper.Map<MemberDto[]>(members);
+            return membersToReturn;
+        }
+
         public async Task<MemberDto> GetMemberAsync(string username)
         {
             return await _context.Users
@@ -35,7 +42,14 @@ namespace API.Data
             var query = _context.Users.AsQueryable();
 
             query = query.Where(e => e.UserName != userParams.CurrentUsername);
-            query = query.Where(e => e.Gender == userParams.Gender);
+            if (userParams.Gender == "")
+            {
+
+            }
+            else
+            {
+                query = query.Where(e => e.Gender == userParams.Gender);
+            }
 
             var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
             var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
@@ -45,6 +59,7 @@ namespace API.Data
             query = userParams.OrderBy switch
             {
                 "created" => query.OrderByDescending(u => u.Created),
+                "score" => query.OrderByDescending(u => u.Score),
                 _ => query.OrderByDescending(u => u.LastActive)
             };
 

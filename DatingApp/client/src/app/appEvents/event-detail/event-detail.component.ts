@@ -10,16 +10,25 @@ import { EventsService } from 'src/app/_services/events.service';
 })
 export class EventDetailComponent implements OnInit {
 appEvent: AppEvent;
+participantsCount: number;
   constructor(private eventService: EventsService ,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadEvent();
+    this.getCount();
   }
 
   loadEvent(){
     this.eventService.getEvent(this.route.snapshot.paramMap.get('id'))
       .subscribe(appevent => {
       this.appEvent = appevent;
+    })
+    
+  }
+
+  getCount(){
+    this.eventService.getParticipantsCount(this.appEvent).subscribe(r => {
+      this.participantsCount = r
     })
   }
 

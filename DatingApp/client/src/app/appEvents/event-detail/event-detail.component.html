@@ -8,13 +8,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-3">
                 <img height="200" width="200" src="/assets/eventPhoto.jpg" alt="{{appEvent.eventName}}">
             </div>
-            <div class="col">Opis wydarzenia.</div>
-            <div class="col">
-                <p>Participants</p>
-            </div>
+            Description:
+            <div class="col">{{appEvent.eventDescription}}</div>
+            <!-- <div class="col">
+                <p>Participants:  {{participantsCount}}</p>
+            </div> -->
+        </div>
+        <div class="row pt-3">
+            <app-comment-card class="border"></app-comment-card>
+            <app-comment-card class="border"></app-comment-card>
+            <app-comment-card class="border"></app-comment-card>
         </div>
     </div>
     

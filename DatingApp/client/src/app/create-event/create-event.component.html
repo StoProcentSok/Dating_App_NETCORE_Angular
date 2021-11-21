@@ -1,0 +1,24 @@
+<form [formGroup]='createEventForm' (ngSubmit)="createEvent()" autocomplete="off">
+    <h2 class="text-center text-primary">Lets Create Your Event!</h2>
+    <hr>
+    Event Name:
+    <app-text-input [formControl]='$any(createEventForm.controls)["eventName"]' 
+        [label]='"Event Name"'></app-text-input>
+    Event Description:
+    <app-text-input [formControl]='$any(createEventForm.controls)["eventDescription"]' 
+        [label]='"Event Description"'></app-text-input>
+    
+
+        <!-- <div class="row" *ngIf="validationErrors.length > 0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{error}}
+                </li>
+            </ul>
+        </div> -->
+
+        <div class="form-group text-center">
+        <button  class="btn btn-success mr-2" type="submit">Create</button>
+        <button class="btn btn-danger mr-2" (click)="Cancel()" type="button">Cancel</button>
+    </div>
+</form>

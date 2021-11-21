@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AppEvent } from '../_models/appEvent';
 import { User } from '../_models/user';
@@ -27,11 +28,15 @@ registerToEvent(appEvent: AppEvent){
   return this.http.post(this.baseUrl + 'events/register/' + appEvent.id, {});
 } 
 
-//TODO refactor: Get all participants earlier and just return collection count, we will need participants to
-//show who already joined event
 getParticipantsCount(appEvent: AppEvent){
-  
+
   return this.http.get<number>(this.baseUrl + 'events/' + appEvent.id + '/participantsCount', {});
+}
+
+createEvent(model: any){
+  return this.http.post<AppEvent>(this.baseUrl + 'events/AddEventFromForm', model).pipe(
+    
+  )
 }
 
 }

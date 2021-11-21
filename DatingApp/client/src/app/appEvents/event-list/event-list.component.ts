@@ -8,6 +8,7 @@ import { EventsService } from 'src/app/_services/events.service';
   styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent implements OnInit {
+createEventMode = false;
 appEvents: AppEvent[];
   constructor(private eventService: EventsService) { }
 
@@ -20,6 +21,14 @@ appEvents: AppEvent[];
     this.eventService.getEvents().subscribe(response => {
       this.appEvents = (response);
     })
+  }
+
+  createEventToggle(){
+    this.createEventMode = !this.createEventMode;
+  }
+
+  cancelCreationMode(event: boolean){
+    this.createEventMode = event;
   }
 
 }

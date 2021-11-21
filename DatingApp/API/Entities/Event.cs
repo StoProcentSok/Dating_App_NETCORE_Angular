@@ -7,6 +7,7 @@ namespace API.Entities
     {
         public int Id { get; set; }
         public string EventName { get; set; }
+        public string EventDescription { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public ICollection<EventPhoto> Photos { get; set; }

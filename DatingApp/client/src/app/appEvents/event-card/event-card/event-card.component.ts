@@ -17,7 +17,7 @@ export class EventCardComponent implements OnInit {
 
   ngOnInit(): void {
     //this.getNumber();
-    this.getParticipantsCount(this.appevent);
+    this.getParticipantsCount();
   }
 
   registerToEvent(appEvent: AppEvent){
@@ -26,13 +26,8 @@ export class EventCardComponent implements OnInit {
     })
   }
 
-  getParticipantsCount(appEvent: AppEvent){
-    this.eventService.getParticipantsCount(appEvent).subscribe(data => 
+  getParticipantsCount(){
+    this.eventService.getParticipantsCount(this.appevent).subscribe(data => 
       this.participants = data)
     }
-
-  getNumber(){
-    this.participants =  Math.floor(Math.random() * (15 - 0)) + 0;
-  }
-
 }
