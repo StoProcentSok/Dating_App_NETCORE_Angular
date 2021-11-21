@@ -30,6 +30,7 @@ registerToEvent(appEvent: AppEvent){
 //TODO refactor: Get all participants earlier and just return collection count, we will need participants to
 //show who already joined event
 getParticipantsCount(appEvent: AppEvent){
+  
   return this.http.get<number>(this.baseUrl + 'events/' + appEvent.id + '/participantsCount', {});
 }
 

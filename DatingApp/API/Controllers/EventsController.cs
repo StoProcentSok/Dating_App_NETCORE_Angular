@@ -35,12 +35,13 @@ namespace API.Controllers
             var @event = await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
             return @event;
         }
-        [HttpGet("getevent/{id}/participantsCount")]
+
+        [HttpGet("{id}/participantsCount")]
         public async Task<ActionResult<int>> getParticipantsCount(int id)
         {
-            var @event = await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
-            var participants = @event.ParticipatingUsers;
-            return participants.Count;
+            var @event = await _context.EventsParticipations
+                        .CountAsync(e => e.EventToParticipateIniId == id);
+            return @event;
         }
 
         [HttpPost("Add")]

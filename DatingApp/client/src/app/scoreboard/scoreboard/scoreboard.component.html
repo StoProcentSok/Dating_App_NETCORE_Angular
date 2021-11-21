@@ -1,1 +1,18 @@
-<p>scoreboard works!</p>
+<H3>Scoreboard: </H3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let member of members">
+        <th scope="row"><img src="{{member.photoUrl || './assets/user.png'}}" alt="" height="80" width=80></th>
+        <td>{{member.knownAs}}</td>
+        <td>{{member.score}}</td>
+        </tr>
+     
+    </tbody>
+  </table>

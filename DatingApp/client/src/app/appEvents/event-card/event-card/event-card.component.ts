@@ -16,7 +16,8 @@ export class EventCardComponent implements OnInit {
   constructor(private eventService: EventsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.getNumber();
+    //this.getNumber();
+    this.getParticipantsCount(this.appevent);
   }
 
   registerToEvent(appEvent: AppEvent){
